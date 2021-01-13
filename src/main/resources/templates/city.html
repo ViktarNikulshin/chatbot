@@ -1,29 +1,43 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>City</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-<form th:action="@{'/city/create'}" th:object="${city}" method="post">
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<body>
+<div class="container">
+    <form th:action="@{'/city/create'}" th:object="${city}" method="post">
+        <div class="form-group">
+            <label>Город</label>
+            <input hidden name="id" th:value="${city.getId() != null ? city.getId() : 'null'}"/>
+            <input type="text" class="form-control" name="cityName" id="cityName" th:value="${city.getCityName()}">
+        </div>
+        <div class="form-group">
+            <label>Описание</label>
+            <input type="text" class="form-control" name="description" id="description" th:value="${city.getDescription()}">
+        </div>
+        <button type="button submit" class="btn btn-lg btn-primary">Сохранить</button>
+        <a th:href="@{'/city/all'}"class="btn btn-secondary btn-lg" role="button" aria-disabled="true">Назад</a>
+<!--        <fieldset>-->
+<!--            <tr>-->
+<!--                <td th:if="${city.getId() != null}">-->
 
-        <fieldset>
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <input name="cityName" id="cityName" th:value="${city.getCityName()}"/>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <input type="text" name="description" size="70%" id="description"-->
+<!--                           th:value="${city.getDescription()}"/>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <input type="submit" style="background: aqua" th:value="Save">-->
+<!--        </fieldset>-->
+<!--        <br/><br/>-->
+<!--        <a th:href="@{'/city/all'}"><input type="button" value="Все города"></a>-->
 
-            <!--        <input type="reset" id="resetButton" name="reset" th:value="Reset"/>-->
-            <tr>
-                <td th:if="${city.getId() != null}">
-                    <input hidden name="id"  th:value="${city.getId() != null ? city.getId() : 'null'}"/>
-                </td>
-                <td>
-                    <input name="cityName" id="cityName" th:value="${city.getCityName()}"/>
-                </td>
-                <td>
-                    <input type="text" name="description" size="70%" id="description" th:value="${city.getDescription()}"/>
-                </td>
-            </tr>
-            <input type="submit" style="background: aqua" th:value="Save">
-        </fieldset>
-    <br/><br/>
-    <a th:href="@{'/city/all'}"><input type="button" value="Все города" ></a>
-
-</form>
+    </form>
+</div>
+</body>
 </html>

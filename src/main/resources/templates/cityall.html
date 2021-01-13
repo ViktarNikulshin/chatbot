@@ -2,35 +2,44 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>City info for telegram bot</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 <body>
-<a href="/city"><input type="button" style="background: aquamarine" value="Добавить город" ></a>
-<br/><br/>
-
-<table border="1">
-    <thead>
-    <tr>
-        <th> Город </th>
-        <th> Описание </th>
-        <th> Действие </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${cities.empty}">
-        <td colspan="2"> No City </td>
-    </tr>
-    <tr th:each="city : ${cities}">
-        <td><span th:text="${city.getCityName()}"> Город </span></td>
-        <td><span th:text="${city.getDescription()}"> Описание </span></td>
-        <td>
-            <a  th:href="@{'/city/' + ${city.id}}" ><input type="button" style="background:beige" value="Редактировать" ></a>
-            <a  th:href="@{'/city/delete/' + ${city.id}}" ><input type="button" style="background: darksalmon" value="удалить" ></a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<div class="container">
+    <br/>
+    <div class="row right">
+        <a href="/city"><button type="button" class="btn btn-lg btn-primary">Создать</button></a>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th> Город</th>
+                    <th> Описание</th>
+                    <th> Действие</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${cities.empty}">
+                    <td colspan="2"> No City</td>
+                </tr>
+                <tr th:each="city : ${cities}">
+                    <td><span th:text="${city.getCityName()}"> Город </span></td>
+                    <td><span th:text="${city.getDescription()}"> Описание </span></td>
+                    <td>
+                        <a th:href="@{'/city/' + ${city.id}}"><button type="button" class="btn btn-lg btn-success">Редактировать</button></a>
+                        <a th:href="@{'/city/delete/' + ${city.id}}"><button type="button" class="btn btn-lg btn-danger">Удалить</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
