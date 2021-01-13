@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<form th:action="@{'/city/create'}" th:object="${city}" method="post">
+
+        <fieldset>
+
+            <!--        <input type="reset" id="resetButton" name="reset" th:value="Reset"/>-->
+            <tr>
+                <td th:if="${city.getId() != null}">
+                    <input hidden name="id"  th:value="${city.getId() != null ? city.getId() : 'null'}"/>
+                </td>
+                <td>
+                    <input name="cityName" id="cityName" th:value="${city.getCityName()}"/>
+                </td>
+                <td>
+                    <input type="text" name="description" size="70%" id="description" th:value="${city.getDescription()}"/>
+                </td>
+            </tr>
+            <input type="submit" style="background: aqua" th:value="Save">
+        </fieldset>
+    <br/><br/>
+    <a th:href="@{'/city/all'}"><input type="button" value="Все города" ></a>
+
+</form>
+</html>

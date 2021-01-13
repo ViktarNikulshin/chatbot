@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<a href="/city"><input type="button" style="background: aquamarine" value="Добавить город" ></a>
+<br/><br/>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th> Город </th>
+        <th> Описание </th>
+        <th> Действие </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${cities.empty}">
+        <td colspan="2"> No City </td>
+    </tr>
+    <tr th:each="city : ${cities}">
+        <td><span th:text="${city.getCityName()}"> Город </span></td>
+        <td><span th:text="${city.getDescription()}"> Описание </span></td>
+        <td>
+            <a  th:href="@{'/city/' + ${city.id}}" ><input type="button" style="background:beige" value="Редактировать" ></a>
+            <a  th:href="@{'/city/delete/' + ${city.id}}" ><input type="button" style="background: darksalmon" value="удалить" ></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
