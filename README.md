@@ -10,3 +10,5 @@ database = postgresql.
 #spring.datasource.data=classpath*:sql/populateDB.sql
 
 Ссылка на самого бота @VNikulshin_bot.
+
+После запуска Spring приложения ссылка для добавления и редактирования городов http://localhost:8081/city/all
