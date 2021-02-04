@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.pst</groupId>
 	<artifactId>chatbot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>chatbot</name>
 	<description>Chat Bot Telegram Travel</description>
 
