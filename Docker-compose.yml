@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   app:
-    image: 'docker-chatbot:latest'
+    image: 'chatbot:0.0.1'
     build:
       context: .
     ports:
@@ -11,15 +11,25 @@ services:
     depends_on:
       - db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5423/chat
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db/postgres
       - SPRING_DATASOURCE_USERNAME=vnikulshin
       - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_DATASOURCE_INITIALIZATION_MODE=always
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
   db:
-    image: 'postgres:latest'
+    image: postgres
     container_name: db
+    volumes:
+       - db-data:/var/lib/postgresql/data
+    ports:
+       - 5433:5432
     environment:
-      - POSTGRES_USER=vnikulshin
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_BD=chat
+        - POSTGRES_USER=vnikulshin
+        - POSTGRES_PASSWORD=admin
+
+volumes:
+  db-data:
+
+
+
